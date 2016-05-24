@@ -17,6 +17,25 @@ var mainState = {
     // This function is called after the preload function
     // Here we set up the game, display sprites, etc.
 
+    // If this is not a desktop...
+    if (game.device.desktop == false) {
+      // Set the scalign mode to SHOW_ALL to show all the game
+      game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
+      // Set a minimum and maximum size for the game
+      // The minimum is half the game size
+      // The maximum is the original size
+      game.scale.setMinMax(game.width/2, game.height/2,
+                            game.width, game.height);
+
+      // Center the game horizontally and vertically
+      game.scale.pageAlignHorizontally = true;
+      game.scale.pageAlignVertically = true;
+    } else {
+      game.scale.pageAlignHorizontally = true;
+      game.scale.pageAlignVertically = true;
+    }
+
     // Change the background color of the game to blue
     game.stage.backgroundColor = '#71c5cf';
 
@@ -36,12 +55,15 @@ var mainState = {
     // Add gravity to the bird
     this.bird.body.gravity.y = 1000;
 
-    // Create the jump sound
-    this.jumpSound = game.add.audio('jump');
-
     // Call the jump function when the spacebar is pressed
     var spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     spacebar.onDown.add(this.jump, this);
+
+    // Create the jump sound
+    this.jumpSound = game.add.audio('jump');
+ 
+    // Call the 'jump' function when we tap/click on the screen
+    game.input.onDown.add(this.jump, this);
 
     // Create an empty group
     this.pipes = game.add.group();
@@ -51,7 +73,7 @@ var mainState = {
 
     // Create and display score in top left
     this.score = 0;
-    this.labelScore = game.add.text(20, 20, "0",
+    this.labelScore = game.add.text(190, 20, "0",
           { font: "30px Montserrat ", fill: "#fff" });
   },
 

@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0" />
     <title>Floppy Burd</title>
     <style>
       body {
@@ -11,13 +12,16 @@
         margin: 0;
         padding: 0;
       }
-      canvas {
-        margin: 10px auto;
-      }
       h1 {
-        text-align: center;
         color: white;
-        margin-top: 20px;
+        text-align: center;
+        margin-top: 70px;
+        padding: 0;
+      }
+      @media screen and (max-width: 767px) {
+        h1 {
+          display: none;
+        }
       }
     </style>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
