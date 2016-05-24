@@ -52,7 +52,7 @@ var mainState = {
     // Create and display score in top left
     this.score = 0;
     this.labelScore = game.add.text(20, 20, "0",
-          { font: "30px Arial", fill: "#fff" });
+          { font: "30px Montserrat ", fill: "#fff" });
   },
 
   update: function() {
