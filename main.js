@@ -61,7 +61,7 @@ var mainState = {
 
     // Create the jump sound
     this.jumpSound = game.add.audio('jump');
- 
+
     // Call the 'jump' function when we tap/click on the screen
     game.input.onDown.add(this.jump, this);
 
