@@ -8,6 +8,9 @@ var mainState = {
     game.load.image('bird', 'assets/bird.png');
     game.load.image('pipe', 'assets/pipe.png');
 
+    // Load the jump sound
+    game.load.audio('jump', 'assets/jump.wav');
+
   },
 
   create: function() {
@@ -32,6 +35,9 @@ var mainState = {
 
     // Add gravity to the bird
     this.bird.body.gravity.y = 1000;
+
+    // Create the jump sound
+    this.jumpSound = game.add.audio('jump');
 
     // Call the jump function when the spacebar is pressed
     var spacebar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -74,7 +80,10 @@ var mainState = {
     if (this.bird.alive == false) {
       return;
     }
-    
+
+    // Play jump sound effect
+    this.jumpSound.play();
+
     // Add a vertical velocity to the bird
     this.bird.body.velocity.y = -350;
 
